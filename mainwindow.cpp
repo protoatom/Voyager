@@ -3,29 +3,36 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    btn_search = new QPushButton("&Search");
-    webView = new QWebEngineView();
-    line_edit = new QLineEdit();
-    grid = new QGridLayout();
-
     mainWidget = new QWidget();
+    settingWidget = new QWidget();
 
+    btn_search = new QPushButton("S");
+    setting = new QPushButton("Set");
 
-    grid -> addWidget(line_edit, 0, 0);
-    grid -> addWidget(btn_search, 0, 9);
+    webView = new QWebEngineView();
+    webView -> load(QUrl("https://www.google.com"));
 
-    grid -> addWidget(webView, 1, 0, 1, 10); //lol
+    lineSearch = new QLineEdit();
 
-    mainWidget->setLayout(grid);
+    grd = new QGridLayout();
+
+    grd -> addWidget(setting, 0, 2);
+    grd -> addWidget(lineSearch, 0, 0);
+    grd -> addWidget(btn_search, 0, 1);
+    grd -> addWidget(webView, 1, 0, 1, 3);
+
+    connect(btn_search, SIGNAL(clicked()), this, SLOT(btn_search_clicked()));
+
+    mainWidget -> setLayout(grd);
     setCentralWidget(mainWidget);
 
-    connect(btn_search, SIGNAL(clicked()), this, SLOT(press_btn_search()));
+
 
 }
 
-void MainWindow::press_btn_search()
-{
-    webView -> load(QUrl(line_edit->text()));
+void MainWindow::btn_search_clicked(){
+    webView -> load(QUrl(lineSearch->text()));
+
 }
 
 MainWindow::~MainWindow() {}

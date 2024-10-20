@@ -1,0 +1,15 @@
+QPushButton {
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    width: 50px;
+    height: 20px;
+    border-radius: 5px;
+}
+QPushButton:hover{
+    background-color: rgba(255, 215, 0, 0.3);
+}
+QLineEdit {
+    border: 2px solid rgba(255, 215, 0, 0.5);
+    width: 50px;
+    height: 20px;
+    border-radius: 3px;
+}

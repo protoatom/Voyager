@@ -2,12 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QUrl>
-#include <QGridLayout>
 #include <QPushButton>
+#include <QUrl>
+#include <QWidget>
+#include <QGridLayout>
 #include <QWebEngineView>
 #include <QLineEdit>
-#include <QWidget>
+#include <QFile>
+#include <QString>
+
 
 class MainWindow : public QMainWindow
 {
@@ -18,13 +21,16 @@ public:
     ~MainWindow();
 
 private:
-    QWidget *mainWidget;
-    QGridLayout *grid;
-    QWebEngineView *webView;
     QPushButton *btn_search;
-    QLineEdit *line_edit;
-public slots:
-    void press_btn_search();
+    QPushButton *setting;
+    QWidget *mainWidget;
+    QWidget *settingWidget;
+    QGridLayout *grd;
+    QWebEngineView *webView;
+    QLineEdit *lineSearch;
 
+public slots:
+    void btn_search_clicked();
+    //void setting_clicked();
 };
 #endif // MAINWINDOW_H

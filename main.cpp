@@ -5,8 +5,11 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    QFile style(":/style.qss");
+    style.open(QFile::ReadOnly);
+    a.setStyleSheet(style.readAll());
     MainWindow w;
-    w.resize(700, 600);
     w.show();
+    w.resize(800, 600);
     return a.exec();
 }
