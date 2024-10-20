@@ -10,6 +10,7 @@
 #include <QLineEdit>
 #include <QFile>
 #include <QString>
+#include <QIcon>
 
 
 class MainWindow : public QMainWindow
@@ -22,7 +23,7 @@ public:
 
 private:
     QPushButton *btn_search;
-    QPushButton *setting;
+    QPushButton *context_menu;
     QWidget *mainWidget;
     QWidget *settingWidget;
     QGridLayout *grd;
@@ -31,6 +32,6 @@ private:
 
 public slots:
     void btn_search_clicked();
-    //void setting_clicked();
+    void setting_clicked();
 };
 #endif // MAINWINDOW_H

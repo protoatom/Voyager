@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>style.qss</file>
+        <file>search_icon.png</file>
+        <file>context_menu.png</file>
     </qresource>
 </RCC>
