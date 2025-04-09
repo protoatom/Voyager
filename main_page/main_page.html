@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добро пожаловать</title>
+    <style>
+
+        @font-face {
+        font-family: "Pixy";
+        src: url("../main_page/Pixy.ttf");
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .logo {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 40px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 300;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: "Pixy";
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
+            100% { box-shadow: 0 0 30px rgba(0, 240, 255, 0.7); }
+        }
+
+        .grid-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(to right, rgba(50, 50, 50, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(50, 50, 50, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-lines"></div>
+    <div class="container">
+        <div class="logo">
+            <img src="logo_voy.png">
+        </div>
+        <h1 class="title">Voyager</h1>
+        <p class="description">Браузер для энтузиастов-исследователей</p>
+    </div>
+</body>
+</html>
