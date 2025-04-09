@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include <QtDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -13,6 +14,10 @@ MainWindow::MainWindow(QWidget *parent)
     btn_search = new QPushButton();
     btn_menu = new QPushButton();
     grd = new QGridLayout();
+    browser_menu = new QMenu("", this);
+    OSINT = new QAction("Osint", browser_menu);
+    Trafic = new QAction("Анализатор трафика", browser_menu);
+    Page = new QAction("Эта страница", browser_menu);
     tabs = new QTabWidget();
     tabs -> setTabsClosable(true);
 
@@ -36,8 +41,14 @@ MainWindow::MainWindow(QWidget *parent)
     btn_menu -> setIcon(QIcon(":/icons/menu_icon.png"));
 
     grd ->addWidget(tabs, 1, 0, 1, 6);
-    webView -> setUrl(QUrl("https://www.google.com/"));
-    tabs -> addTab(webView, "New Tab");
+
+
+
+    /* -- Start Page -- */
+
+    webView -> load(QUrl("qrc:/main_page/main_page.html"));
+    tabs -> addTab(webView, "Wellcome");
+    /*  --Main Widget-- */
 
     mainWidget -> setLayout(grd);
     setCentralWidget(mainWidget);
@@ -49,15 +60,20 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(btn_reload, &QPushButton::clicked, this, &MainWindow::on_btn_reload_clicked);
     QObject::connect(btn_forward, &QPushButton::clicked, this, &MainWindow::on_btn_forward_clicked);
     QObject::connect(btn_menu, &QPushButton::clicked, this, &MainWindow::on_btn_menu_clicked);
-
-
 }
 
 MainWindow::~MainWindow() {}
 
 void MainWindow::on_btn_search_clicked()
 {
-    if (lineSearch -> text() == "") {  }
+    if (lineSearch -> text().isEmpty()) {  }
+    else if (lineSearch -> text().startsWith("https://") || lineSearch -> text().startsWith("http://"))
+    {
+        webView = new QWebEngineView(this);
+        webView -> setUrl(QUrl(lineSearch -> text()));
+        tabs -> addTab(webView, lineSearch -> text());
+
+    }
     else {
         webView = new QWebEngineView(this);
         webView -> setUrl(QUrl("https://www.google.com/search?q=" + lineSearch -> text()));
@@ -83,15 +99,17 @@ void MainWindow::on_btn_forward_clicked()
 
 void MainWindow::on_btn_reload_clicked()
 {
-    webView -> page() -> triggerAction(QWebEnginePage::Reload);
+    QWebEngineView *current = qobject_cast<QWebEngineView *>(tabs->currentWidget());
+    if (current) {
+        current->reload();
+    }
 }
 
 void MainWindow::on_btn_menu_clicked()
 {
-
+    browser_menu -> exec(btn_menu->mapToGlobal(QPoint(0, btn_menu->height())));
+    browser_menu -> addAction(OSINT);
+    browser_menu -> addAction(Trafic);
+    browser_menu -> addAction(Page);
 }
 
-void MainWindow::click_on_link_new_tab(const QString &url)
-{
-
-}
