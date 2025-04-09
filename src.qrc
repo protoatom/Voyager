@@ -2,9 +2,13 @@
     <qresource prefix="/">
         <file>icons/back_icon.png</file>
         <file>icons/forward_icon.png</file>
+        <file>icons/info.txt</file>
+        <file>icons/menu_icon.png</file>
         <file>icons/reload_icon.png</file>
         <file>icons/search_icon.png</file>
-        <file>icons/menu_icon.png</file>
-        <file>styles/dark_theme.qss</file>
+        <file>main_page/main_page.html</file>
+        <file>main_page/main_page_style.css</file>
+        <file>main_page/Pixy.ttf</file>
+        <file>main_page/logo_voy.png</file>
     </qresource>
 </RCC>
